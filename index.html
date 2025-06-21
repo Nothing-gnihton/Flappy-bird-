@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird - Stunning Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="start-screen">
+            <h1>Flappy Bird</h1>
+            <button id="start-btn">Start Game</button>
+        </div>
+
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+
+        <div class="game-over-screen">
+            <h2>Game Over</h2>
+            <p>Your Score: <span id="final-score"></span></p>
+            <button id="try-again-btn">Try Again</button>
+        </div>
+
+        <div class="scoreboard">
+            <p>Top Scores:</p>
+            <ul>
+                <li id="score1">0</li>
+                <li id="score2">0</li>
+                <li id="score3">0</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
