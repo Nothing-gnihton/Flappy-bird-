@@ -23,24 +23,25 @@ function startGame() {
     birdVelocity = 0;
 
     document.addEventListener('keydown', flap);
+    document.addEventListener('click', flap);
     gameInterval = setInterval(gameLoop, 20);
 }
 
 function flap() {
-    birdVelocity = -8;
+    birdVelocity = -10; // Increased flap power
 }
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Bird
+    // Bird physics
     birdVelocity += gravity;
     bird.y += birdVelocity;
 
     ctx.fillStyle = 'yellow';
     ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
 
-    // Pipes
+    // Pipe logic
     if (pipes.length === 0 || pipes[pipes.length - 1].x < 250) {
         let pipeTopHeight = Math.random() * 200 + 50;
         let gap = 150;
@@ -67,7 +68,7 @@ function gameLoop() {
         }
     }
 
-    // Ground collision
+    // Ground and top collision
     if (bird.y + bird.height > canvas.height || bird.y < 0) {
         gameOver();
     }
@@ -81,6 +82,7 @@ function gameLoop() {
 function gameOver() {
     clearInterval(gameInterval);
     document.removeEventListener('keydown', flap);
+    document.removeEventListener('click', flap);
     canvas.style.display = 'none';
     gameOverScreen.style.display = 'block';
 
